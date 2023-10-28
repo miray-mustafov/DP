@@ -64,10 +64,25 @@ def stairsKstepsOkspace(n, k):
     return dp[n % k]
 
 
-n = 6
+def redStairsKsteps(n, k, st):
+    dp = [0] * k
+    dp[0] = 1
+    for i in range(1, n + 1):
+        for j in range(1, k):
+            if i - j < 0:
+                break
+            if not st[i]:
+                dp[i % k] = 0
+            else:
+                dp[i % k] += dp[(i - j) % k]
+    return dp[n % k]
+
+
+n = 7
 k = 3
 print(f'To reach {n} stairs there are {stairs(n)} ways')
 print('stairs2 ' + str(stairs2(n)))
 print('stairs3steps ' + str(stairs3steps(n)))
 print(stairsKsteps(n, k))
 print(stairsKstepsOkspace(n, k))
+print(redStairsKsteps(7, k, [True, False, True, False, False, True, True, True]))
