@@ -90,12 +90,22 @@ def paidStaircase(n, p):
     # return p[n]
 
 
+def paidStaircaseO2space(n, p):
+    a, b, c = 0, p[1], 0
+    for i in range(n + 1):
+        c = min(a, b) + p[i]
+        a, b = b, c
+    return c
+
+
 n = 7
 k = 3
+p = [0, 1, 1, 1, 4, 2, 1, 5]
 print(f'To reach {n} stairs there are {stairs(n)} ways')
 print('stairs2 ' + str(stairs2(n)))
 print('stairs3steps ' + str(stairs3steps(n)))
 print(stairsKsteps(n, k))
 print(stairsKstepsOkspace(n, k))
 print(redStairsKsteps(7, k, [True, False, True, False, False, True, True, True]))
-print('paidStaircase ' + str(paidStaircase(5, [0, 1, 1, 1, 4, 2])))
+print('paidStaircase ' + str(paidStaircase(len(p) - 1, p)))
+print('paidStaircaseO2space ' + str(paidStaircaseO2space(len(p) - 1, p)))
