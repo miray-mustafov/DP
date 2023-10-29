@@ -78,6 +78,18 @@ def redStairsKsteps(n, k, st):
     return dp[n % k]
 
 
+def paidStaircase(n, p):
+    dp = [0] * (n + 1)
+    dp[1] = p[1]
+    for i in range(2, n + 1):
+        dp[i] = min(dp[i - 1], dp[i - 2]) + p[i]
+    return dp[n]
+    # without new arr
+    # for i in range(2, n + 1):
+    #     p[i] = min(p[i - 1], p[i - 2]) + p[i]
+    # return p[n]
+
+
 n = 7
 k = 3
 print(f'To reach {n} stairs there are {stairs(n)} ways')
@@ -86,3 +98,4 @@ print('stairs3steps ' + str(stairs3steps(n)))
 print(stairsKsteps(n, k))
 print(stairsKstepsOkspace(n, k))
 print(redStairsKsteps(7, k, [True, False, True, False, False, True, True, True]))
+print('paidStaircase ' + str(paidStaircase(5, [0, 1, 1, 1, 4, 2])))
