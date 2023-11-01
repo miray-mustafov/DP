@@ -1,3 +1,5 @@
+import copy
+
 '''
 1. Objective function: F(i,j)
 2.
@@ -39,15 +41,48 @@ def max_profit(matrix):
     return matrix[m - 1][n - 1]
 
 
-# Example usage:
+def max_profit_path(matrix):
+    def track_path(matrix):
+        path = []
+        i, j = len(matrix) - 1, len(matrix[0]) - 1
+        while not (i == 0 and j == 0):
+            path.append([i, j])
+            if j > 0 and i > 0:
+                if matrix[i - 1][j] > matrix[i][j - 1]:
+                    i -= 1
+                else:
+                    j -= 1
+            elif j == 0:
+                i -= 1
+            elif i == 0:
+                j -= 1
+        path.append([0, 0])
+        path.reverse()
+        return path
+
+    m, n = len(matrix), len(matrix[0])
+    for i in range(0, m):
+        for j in range(0, n):
+            if i > 0 and j > 0:
+                matrix[i][j] += max(matrix[i - 1][j], matrix[i][j - 1])
+            elif i > 0:
+                matrix[i][j] += matrix[i - 1][j]
+            elif j > 0:
+                matrix[i][j] += matrix[i][j - 1]
+
+    # show_matrix(matrix)
+    return track_path(matrix)
+
+
 m = 3
 n = 7
 matrix = [
-    [1, 0, 0, 0, 50],
-    [2, 1, 1, 1, 100],
+    [1, 0, 0, 0, 2],
+    [2, 1, 1, 1, 1],
     [5, 4, 1, 2, 1],
 ]
 print(f'Number of unique paths: {unique_paths(m, n)}')
-print(f'max_profit: {max_profit(matrix)}')
-
-# Homework: return the actual path
+# Having in mind that matrix.copy() won`t make copy of the inner lists,
+# we should use:
+print(f'max_profit: {max_profit([row[:] for row in matrix])}')
+print(f'max_profit_path: {max_profit_path(copy.deepcopy(matrix))}')
