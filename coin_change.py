@@ -25,4 +25,19 @@ def coinChange(n):
     return dp[n]
 
 
-print(coinChange(6))
+def coinChangeSpecified(n, coins):
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    for i in range(1, n + 1):
+        for d in coins:
+            if i >= d:
+                dp[i] += dp[i - d]
+
+    return dp[n]
+
+
+coins = [1, 3, 5, 10]
+n = 12
+result = coinChange(n)
+result2 = coinChangeSpecified(n, coins)
+print(result, result2)
