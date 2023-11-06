@@ -1,8 +1,9 @@
 '''
 Problen: Coin Change
-Denominations: 1, 3, 5, 10
+Denominations: int[]
 What are the number of ways to return change n by using EXACTLY t coins?
 
+example transition func:
 F(i,t) = f(i-1,t-1) + f(i-2,t-1) + f(i-3,t-1) + f(i-5,t-1)
 '''
 
