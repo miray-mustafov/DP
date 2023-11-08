@@ -25,7 +25,8 @@ def coinChangeUnique(n, coins):
     return dp[n][len(coins) - 1]
 
 
-def coinChangeUniqueClever(n, coins):  # the inner loop became switched with the main one
+def coinChangeUniqueClever(n, coins):
+    # switching loops basically transforms from finding num of ways to num of unique ways
     dp = [0] * (n + 1)
     dp[0] = 1
     for coin in coins:
