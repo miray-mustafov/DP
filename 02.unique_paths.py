@@ -83,6 +83,6 @@ matrix = [
 ]
 print(f'Number of unique paths: {unique_paths(m, n)}')
 # Having in mind that matrix.copy() won`t make copy of the inner lists,
-# we should use:
+# we should use those 2 methods:
 print(f'max_profit: {max_profit([row[:] for row in matrix])}')
 print(f'max_profit_path: {max_profit_path(copy.deepcopy(matrix))}')

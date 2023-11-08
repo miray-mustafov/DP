@@ -15,7 +15,7 @@ F(i,x) = F(i-coin, 1-x)+F(i-next_coin, 1-x) ...
 
 
 def coinChangeEvenCoins(n, coins):
-    dp = [[0 for j in range(2)] for i in range(n + 1)]
+    dp = [[0 for _ in range(2)] for _ in range(n + 1)]
 
     # odd = 0, even = 1
     dp[0][0] = 0

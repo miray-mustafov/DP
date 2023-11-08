@@ -1,6 +1,6 @@
-# Searching for the minimum cost ot get to Nth stair
+# Searching for the minimum cost to get to Nth stair
 # 1. Define the objective func
-#   f(i) nuber of ways to reach the i-th stair
+#   f(i) minimum cost value
 # 2. Identify base cases
 #   f(0) = 1
 #   f(1) = 1
