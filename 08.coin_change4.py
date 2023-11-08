@@ -25,6 +25,18 @@ def coinChangeUnique(n, coins):
     return dp[n][len(coins) - 1]
 
 
+def coinChangeUniqueClever(n, coins):  # the inner loop became switched with the main one
+    dp = [0] * (n + 1)
+    dp[0] = 1
+    for coin in coins:
+        for i in range(1, n + 1):
+            if i >= coin:
+                dp[i] += dp[i - coin]
+
+    return dp[n]
+
+
 n = 4
 coins = [1, 2, 3, 5]
 print(f'Unique ways to make a change {n} is {coinChangeUnique(n, coins)}')
+print(f'Unique ways to make a change {n} is {coinChangeUniqueClever(n, coins)}')
