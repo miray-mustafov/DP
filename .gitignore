@@ -1,0 +1,7 @@
+#.gitignore #Ignore it itselft first
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
